@@ -158,8 +158,8 @@ int perintahSembilan() {
 
 
 int main() {
-	  prctl(PR_SET_NAME, (unsigned long)"process", 0, 0, 0);
-	  setup_signal_handlers();
+    setup_signal_handlers();
+    prctl(PR_SET_NAME, (unsigned long)"process", 0, 0, 0);
     if (perintahSatu() != 0) {
     }
     if (perintahDua() != 0) {
