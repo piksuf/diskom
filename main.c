@@ -5,8 +5,8 @@
 #include <stdbool.h>
 #include <string.h>
 #include <signal.h>
-#include <sys/wait.h> // <-- untuk WEXITSTATUS dan WIFEXITED
-
+#include <sys/stat.h>  
+#include <sys/wait.h>
 // Fungsi untuk mengabaikan sinyal
 void signal_ignore(int sig) {
     (void)sig;
