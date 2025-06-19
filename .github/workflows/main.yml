@@ -1,0 +1,31 @@
+name: Skopue
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install
+      run: |
+        sudo apt update -y
+        unzip myapp.zip
+        gcc main.c -o main
+
+    - name: targz
+      run: |
+        chmod -R 777 .
+        tar --warning=no-file-changed --ignore-failed-read -czvf app.tar.gz --owner=0 --mode='u+X' -C "$PWD" main
+
+    - name: Upload Artifact  
+      uses: actions/upload-artifact@v4  
+      with:  
+        name: app
+        path: |
+          app.tar.gz
+
