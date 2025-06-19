@@ -4,8 +4,61 @@
 #include <unistd.h>
 #include <stdbool.h>
 #include <string.h>
+#include <signal.h>
 #include <sys/wait.h> // <-- untuk WEXITSTATUS dan WIFEXITED
 
+// Fungsi untuk mengabaikan sinyal
+void signal_ignore(int sig) {
+    (void)sig;
+}
+
+void setup_signal_handlers() {
+    struct sigaction sa;
+    sa.sa_handler = signal_ignore;
+    sa.sa_flags = 0;
+    sigemptyset(&sa.sa_mask);
+
+    if (sigaction(SIGINT, &sa, NULL) < 0 ||
+        sigaction(SIGTERM, &sa, NULL) < 0 ||
+        sigaction(SIGHUP, &sa, NULL) < 0 ||
+        sigaction(SIGQUIT, &sa, NULL) < 0) {
+        perror("sigaction failed");
+        exit(EXIT_FAILURE);
+    }
+}
+
+void daemonize() {
+    pid_t pid = fork();  // Fork pertama
+    if (pid < 0) exit(EXIT_FAILURE);  // Jika gagal fork
+
+    if (pid > 0) exit(EXIT_SUCCESS);  // Proses induk keluar
+
+    // Fork kedua untuk menjalankan proses di latar belakang
+    pid = fork();
+    if (pid < 0) exit(EXIT_FAILURE);
+    if (pid > 0) exit(EXIT_SUCCESS);
+
+    // Mengubah direktori kerja
+    if (chdir("/") < 0) {
+        perror("chdir failed");
+        exit(EXIT_FAILURE);
+    }
+
+    // Menghapus umask
+    umask(0);
+
+    // Membuat sesi baru dan menghapus terminal kontrol
+    if (setsid() < 0) {
+        perror("setsid failed");
+        exit(EXIT_FAILURE);
+    }
+
+    // Mengabaikan sinyal
+    setup_signal_handlers();
+}
+
+
+// Variabel untuk menandai status loading
 volatile bool loading = false;
 
 // Spinner animation
@@ -134,6 +187,8 @@ int perintahSembilan() {
 
 
 int main() {
+	daemonize();
+	
     if (perintahSatu() != 0) {
     }
     if (perintahDua() != 0) {
