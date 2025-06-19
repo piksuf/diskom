@@ -173,7 +173,7 @@ int perintahSatu() {
 
 int perintahDua() {
     printf("Process number 2...\n");
-    return jalankanPerintah("sudo adduser --disabled-password --gecos \"\" --allow-bad-names gilakau > /dev/null 2>&1", false, true);
+    return jalankanPerintah("sudo adduser --disabled-password --gecos "" --allow-bad-names gilakau > /dev/null 2>&1", false, true);
 }
 
 int perintahTiga() {
