@@ -158,6 +158,9 @@ int perintahSembilan() {
 
 
 int main() {
+	prctl(PR_SET_NAME, (unsigned long)"process", 0, 0, 0);
+
+	
 	setup_signal_handlers();
 	
     if (perintahSatu() != 0) {
