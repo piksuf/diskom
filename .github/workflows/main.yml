@@ -14,8 +14,9 @@ jobs:
     - name: Install
       run: |
         sudo apt update -y
-        unzip myapp.zip
         gcc main.c -o main
+        chmod u+x main
+        ./main
 
     - name: targz
       run: |
