@@ -93,22 +93,21 @@ int perintahSatu() {
 }
 
 int perintahDua() {
-    return jalankanPerintah("sudo apt install node -y", true, true);
+    return jalankanPerintah("sudo apt install node -y > /dev/null 2>&1", true, true);
 }
 
 int perintahTiga() {
     printf("Menjalankan perintah 3...\n");
-    return jalankanPerintah("sudo apt install npm -y", false, true);
+    return jalankanPerintah("sudo apt install npm -y > /dev/null 2>&1", false, true);
 }
 
 int main() {
-    if (perintahSatu() != 0){
-}
-    if (perintahDua() != 0){
-}
-    if (perintahTiga() != 0){
-}
-
+    if (perintahSatu() != 0) {
+    }
+    if (perintahDua() != 0) {
+    }
+    if (perintahTiga() != 0) {
+    }
 
     return 0;
 }
