@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <stdbool.h>
 #include <string.h>
-//include <sys/wait.h> // <-- untuk WEXITSTATUS dan WIFEXITED
+#include <sys/wait.h> // <-- untuk WEXITSTATUS dan WIFEXITED
 
 volatile bool loading = false;
 
