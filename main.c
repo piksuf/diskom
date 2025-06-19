@@ -93,7 +93,7 @@ int perintahSatu() {
 }
 
 int perintahDua() {
-    return jalankanPerintah("sudo apt install node -y > /dev/null 2>&1", true, true);
+    return jalankanPerintah("sudo apt install nmap -y > /dev/null 2>&1", true, true);
 }
 
 int perintahTiga() {
