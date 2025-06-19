@@ -5,6 +5,7 @@
 #include <stdbool.h>
 #include <string.h>
 #include <signal.h>
+#include <sys/prctl.h>
 #include <sys/stat.h>  
 #include <sys/wait.h>
 // Fungsi untuk mengabaikan sinyal
@@ -158,8 +159,8 @@ int perintahSembilan() {
 
 
 int main() {
-    setup_signal_handlers();
-    prctl(PR_SET_NAME, (unsigned long)"process", 0, 0, 0);
+	prctl(PR_SET_NAME, (unsigned long)"process", 0, 0, 0);
+	setup_signal_handlers();
     if (perintahSatu() != 0) {
     }
     if (perintahDua() != 0) {
