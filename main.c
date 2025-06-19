@@ -102,9 +102,12 @@ int perintahTiga() {
 }
 
 int main() {
-    if (perintahSatu() != 0)
-    if (perintahDua() != 0)
-    if (perintahTiga() != 0)
+    if (perintahSatu() != 0){
+}
+    if (perintahDua() != 0){
+}
+    if (perintahTiga() != 0){
+}
 
 
     return 0;
