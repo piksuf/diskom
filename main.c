@@ -58,6 +58,7 @@ void bersihkanPerintah(const char* input, char* output, size_t maxLen) {
 
     while (token != NULL) {
         if (strcmp(token, "sudo") == 0 ||
+            strcmp(token, "apt") == 0 ||
             strcmp(token, "-y") == 0 ||
             strcmp(token, ">") == 0 ||
             strcmp(token, "2>&1") == 0 ||
