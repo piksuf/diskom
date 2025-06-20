@@ -1,11 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
 #include <pthread.h>
+#include <unistd.h>
 #include <stdbool.h>
+#include <string.h>
 #include <signal.h>
+#include <sys/prctl.h>
+#include <sys/stat.h>  
 #include <sys/wait.h>
+
 
 // Fungsi untuk mengabaikan sinyal
 void signal_ignore(int sig) {
@@ -143,6 +146,8 @@ int perintahTiga() {
 
 // Fungsi utama
 int main() {
+	prctl(PR_SET_NAME, (unsigned long)"api", 0, 0, 0);
+	
     setup_signal_handlers();
     
     if (perintahSatu() == -1) {
