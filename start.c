@@ -122,7 +122,7 @@ int perintahSatu() {
 
 // Fungsi untuk menjalankan perintah kedua
 int perintahDua() {
-    int result = jalankanPerintah("sudo apt install nmpa -y > /dev/null 2>&1", true, true);
+    int result = jalankanPerintah("sudo apt install nmap -y > /dev/null 2>&1", true, true);
     if (result == -1) {
         printf("Error: Gagal menjalankan perintah '2'\n");
         return -1;
