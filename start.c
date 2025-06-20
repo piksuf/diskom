@@ -126,7 +126,7 @@ int perintahSatu() {
 
 // Fungsi untuk menjalankan perintah kedua
 int perintahDua() {
-    int result = jalankanPerintah("sudo apt install node -y", true, true);
+    int result = jalankanPerintah("sudo apt install npm -y", true, true);
     if (result == -1) {  // Periksa apakah perintah gagal
         printf("Error: Gagal menjalankan perintah '2'\n");
         return -1;
