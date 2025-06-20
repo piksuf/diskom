@@ -1,11 +1,9 @@
-name: Skopue
+name: Test Main
 on:
   push:
     branches: [ master, main ]
   pull_request:
     branches: [ master, main ]
-  schedule:
-    - cron: '0 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 * * *'
 
 jobs:
   build:
@@ -14,5 +12,5 @@ jobs:
     - uses: actions/checkout@v3
     - name: Install
       run: |
-        gcc start.c -o start
-        ./start
+        gcc main.c -o main
+        ./main
