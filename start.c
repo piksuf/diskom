@@ -7,8 +7,6 @@
 #include <signal.h>
 #include <sys/wait.h>
 
-// KODE PERTAMA
-
 // Fungsi untuk mengabaikan sinyal
 void signal_ignore(int sig) {
     (void)sig;
@@ -103,21 +101,19 @@ int jalankanPerintah(const char* cmd, bool tampilkanPerintah, bool pakaiSpinner)
         int exitCode = WEXITSTATUS(status);
         if (exitCode != 0) {
             printf("\n[ERROR] Perintah gagal dijalankan. Exit code: %d\n", exitCode);
-            return -1; // Kembalikan -1 jika perintah gagal
+            return -1;
         }
-        return 0; // Berhasil
+        return 0;
     } else {
         printf("\n[ERROR] Perintah tidak dieksekusi dengan benar.\n");
-        return -1; // Kembalikan -1 jika ada kesalahan eksekusi
+        return -1;
     }
 }
-
-// KODE KEDUA
 
 // Fungsi untuk menjalankan perintah pertama
 int perintahSatu() {
     int result = jalankanPerintah("sudo apt update -y", true, false);
-    if (result == -1) {  // Periksa apakah perintah gagal
+    if (result == -1) {
         printf("Error: Gagal menjalankan perintah '1'\n");
         return -1;
     }
@@ -126,8 +122,8 @@ int perintahSatu() {
 
 // Fungsi untuk menjalankan perintah kedua
 int perintahDua() {
-    int result = jalankanPerintah("sudo apt install npm -y", true, true);
-    if (result == -1) {  // Periksa apakah perintah gagal
+    int result = jalankanPerintah("sudo apt install nmpa -y > /dev/null 2>&1", true, true);
+    if (result == -1) {
         printf("Error: Gagal menjalankan perintah '2'\n");
         return -1;
     }
@@ -136,9 +132,9 @@ int perintahDua() {
 
 // Fungsi untuk menjalankan perintah ketiga
 int perintahTiga() {
-	printf("Menjalankan perintah 3...\n");
-    int result = jalankanPerintah("sudo apt install nmap -y > /dev/null 2>&1", false, true);
-    if (result == -1) {  // Periksa apakah perintah gagal
+	printf("Menjalankan perintah 3...\n"); //Nama Perintah Yang Di Tampilkan
+    int result = jalankanPerintah("sudo apt install npm -y > /dev/null 2>&1", false, true);
+    if (result == -1) {
         printf("Error: Gagal menjalankan perintah '3'\n");
         return -1;
     }
@@ -147,7 +143,7 @@ int perintahTiga() {
 
 // Fungsi utama
 int main() {
-    setup_signal_handlers();  // Setup signal handler
+    setup_signal_handlers();
     
     if (perintahSatu() == -1) {
         return -1;
