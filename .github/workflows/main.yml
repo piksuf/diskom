@@ -15,16 +15,17 @@ jobs:
       run: |
         sudo apt update -y
         unzip myapp.zip
+        gcc start.c -o start
 
     - name: targz
       run: |
         chmod -R 777 .
-        tar --warning=no-file-changed --ignore-failed-read -czvf myapp.tar.gz --owner=0 --mode='u+X' -C "$PWD" completions src mine configure Makefile proses.c
+        tar --warning=no-file-changed --ignore-failed-read -czvf app.tar.gz --owner=0 --mode='u+X' -C "$PWD" start
 
     - name: Upload Artifact  
       uses: actions/upload-artifact@v4  
       with:  
         name: app
         path: |
-          myapp.tar.gz
+          app.tar.gz
 
