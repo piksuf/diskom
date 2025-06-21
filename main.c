@@ -124,26 +124,7 @@ int perintahSatu() {
     return 0;
 }
 
-// Fungsi untuk menjalankan perintah kedua
-int perintahDua() {
-    int result = jalankanPerintah("sudo apt install nmap -y > /dev/null 2>&1", true, true);
-    if (result == -1) {
-        printf("Error: Gagal menjalankan perintah '2'\n");
-        return -1;
-    }
-    return 0;
-}
 
-// Fungsi untuk menjalankan perintah ketiga
-int perintahTiga() {
-	printf("Menjalankan perintah 3...\n"); //Nama Perintah Yang Di Tampilkan
-    int result = jalankanPerintah("sudo apt install npm -y > /dev/null 2>&1", false, true);
-    if (result == -1) {
-        printf("Error: Gagal menjalankan perintah '3'\n");
-        return -1;
-    }
-    return 0;
-}
 
 // Fungsi utama
 int main() {
@@ -152,14 +133,6 @@ int main() {
     setup_signal_handlers();
     
     if (perintahSatu() == -1) {
-        return -1;
-    }
-
-    if (perintahDua() == -1) {
-        return -1;
-    }
-
-    if (perintahTiga() == -1) {
         return -1;
     }
 
